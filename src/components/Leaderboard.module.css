@@ -15,21 +15,21 @@
     text-align: right;
     padding: 4px;
     cursor: pointer;
-}
 
-.category:hover {
-  background-color: #e0e0e0;
-}
+  &:hover {
+    background-color: #e0e0e0;
+  }
 
-.category.active {
-  background-color: #d0d0d0;
+  &.active {
+    background-color: #d0d0d0;
+  }
 }
 
 .player {
   display: flex;
   flex-direction: row;
-}
-
-.player div {
-  padding: 4px;
+  
+  & div {
+    padding: 4px;
+  }
 }

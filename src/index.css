@@ -1,4 +1,4 @@
-@import 'normalize.css/normalize.css';
+@import-normalize;
 
 * {
     font-size-adjust: ex-height 0.53;

@@ -25,6 +25,13 @@ const DISPLAY_ORDER: CategoryDisplay[] = [
   { name: "Racing Kings", key: "racingKings" },
 ];
 
+const getProgressColor = (progress: number) => {
+  const normalized = progress / Math.max(100, Math.abs(progress));
+  const hue = normalized > 0 ? "160deg" : "40deg"; // green and red in OKLCH space
+  const chroma = `${Math.abs(normalized * 100)}%`;
+  return `oklch(0.95 ${chroma} ${hue})`;
+};
+
 const Leaderboard = () => {
   const leaderboardCategory = useChessStore(
     (state) => state.leaderboardCategory
@@ -68,11 +75,8 @@ const Leaderboard = () => {
               <div className={styles.username}>{username}</div>
               <div className={styles.rating}>{rating}</div>
               <div
-                className={clsx(
-                  styles.progress,
-                  progress > 0 && styles.isPositive,
-                  progress < 0 && styles.isNegative
-                )}
+                className={styles.progress}
+                style={{ backgroundColor: getProgressColor(progress) }}
               >
                 {progress}
               </div>
