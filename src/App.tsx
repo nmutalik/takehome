@@ -17,9 +17,23 @@ const PANES: Pane[] = [
     component: Leaderboard,
   },
 ];
+
+const getInitialPane = () => {
+  const paneKey = window.location.hash.replace("#", "");
+  return Math.max(
+    PANES.findIndex((pane) => pane.key === paneKey),
+    0
+  );
+};
+
 function App() {
-  const [selectedPane, setSelectedPane] = useState(0);
+  const [selectedPane, setSelectedPane] = useState(() => getInitialPane());
   const SelectedComponent = PANES[selectedPane].component;
+
+  const selectPane = (index: number) => {
+    setSelectedPane(index);
+    window.location.hash = PANES[index].key;
+  };
 
   return (
     <div className={styles.app}>
@@ -30,14 +44,14 @@ function App() {
             className={`${styles.pane} ${
               selectedPane === index ? styles.active : ""
             }`}
-            onClick={() => setSelectedPane(index)}
+            onClick={() => selectPane(index)}
           >
             {pane.name}
           </div>
         ))}
       </div>
       <div className={styles.content}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
           <SelectedComponent />
         </Suspense>
       </div>

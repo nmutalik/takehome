@@ -7,3 +7,8 @@
     align-items: center;
     gap: 10px;
 }
+
+.loading {
+    height: 200px;
+    line-height: 200px;;
+}
