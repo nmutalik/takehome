@@ -1,23 +1,23 @@
 .container {
   display: flex;
+  flex: 0 1 auto;
   flex-direction: row;
 }
 
-.leaderboard {
-  flex: 1;
-}
 
 .categoryWrapper {
   width: 120px;
+  background-color: #f5f6fa;
 }
 
 .category {
     text-align: right;
     padding: 4px;
     cursor: pointer;
+    border-right: 1px solid #2f3640;
 
   &:hover {
-    background-color: #f5f6fa;
+    background-color: #e7e8ec;
   }
 
   &.active {
@@ -37,7 +37,7 @@
     line-height: 20px;
   }
 
-  .rating, .progress {
+  .rank, rating, .progress {
     font-size: 12px;
     font-weight: bold;
     font-variant-numeric: tabular-nums;
@@ -52,7 +52,23 @@
     text-align: center;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .username {
     width: 200px;
+    color:black;
+    cursor: pointer;
+    
+    &:hover {
+      color: #718093;
+      text-decoration: underline;
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: #f5f6fa;
   }
 }

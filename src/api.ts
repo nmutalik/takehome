@@ -47,10 +47,6 @@ export type LeaderboardCategory =
 
 export type Leaderboard = GenericLeaderboard<LeaderboardCategory>;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export const fetchLeaderboard = async (): Promise<Leaderboard> => {
   const response = await fetch("/api/leaderboard");
 

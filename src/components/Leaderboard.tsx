@@ -70,7 +70,7 @@ const Leaderboard = () => {
         ))}
       </div>
       <div className={styles.leaderboard}>
-        {players.map((player) => {
+        {players.map((player, index) => {
           const {
             title,
             username,
@@ -81,8 +81,13 @@ const Leaderboard = () => {
 
           return (
             <div key={player.id} className={styles.player}>
+              <div className={styles.rank}>{index + 1}</div>
               <div className={styles.title}>{title}</div>
-              <a href={`https://lichess.org/@/${username}`}>
+              <a
+                href={`https://lichess.org/@/${username}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className={styles.username}>{username}</div>
               </a>
               <div
@@ -103,11 +108,6 @@ const Leaderboard = () => {
           );
         })}
       </div>
-      <pre>
-        <code className="language-json">
-          {JSON.stringify(leaderboard, null, 2)}
-        </code>
-      </pre>
     </div>
   );
 };
