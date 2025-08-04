@@ -17,19 +17,42 @@
     cursor: pointer;
 
   &:hover {
-    background-color: #e0e0e0;
+    background-color: #f5f6fa;
   }
 
   &.active {
-    background-color: #d0d0d0;
+    background-color: #dcdde1;
   }
 }
 
 .player {
   display: flex;
   flex-direction: row;
-  
-  & div {
+
+
+  div {
     padding: 4px;
+    margin: 4px;
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .rating, .progress {
+    font-size: 12px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    font-family: "Courier New", Courier, monospace;
+    width: 35px;
+    text-align: right;
+  }
+
+  .title {
+    width: 20px;
+    color: #ebb504;
+    text-align: center;
+  }
+
+  .username {
+    width: 200px;
   }
 }

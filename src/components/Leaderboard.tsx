@@ -25,9 +25,19 @@ const DISPLAY_ORDER: CategoryDisplay[] = [
   { name: "Racing Kings", key: "racingKings" },
 ];
 
+const LOW_RATING = Math.log(2200);
+const HIGH_RATING = Math.log(3500);
+const getRatingColor = (rating: number) => {
+  const normalized =
+    (Math.log(rating) - LOW_RATING) / (HIGH_RATING - LOW_RATING);
+  const lightness = 1 - normalized * 0.15; // 0.85 to 1
+  const chroma = normalized * 0.15;
+  return `oklch(${lightness} ${chroma} 86.77)`;
+};
+
 const getProgressColor = (progress: number) => {
   const normalized = progress / Math.max(100, Math.abs(progress));
-  const hue = normalized > 0 ? "160deg" : "40deg"; // green and red in OKLCH space
+  const hue = normalized > 0 ? "160deg" : "20deg"; // green and red in OKLCH space
   const chroma = `${Math.abs(normalized * 100)}%`;
   return `oklch(0.95 ${chroma} ${hue})`;
 };
@@ -72,8 +82,17 @@ const Leaderboard = () => {
           return (
             <div key={player.id} className={styles.player}>
               <div className={styles.title}>{title}</div>
-              <div className={styles.username}>{username}</div>
-              <div className={styles.rating}>{rating}</div>
+              <a href={`https://lichess.org/@/${username}`}>
+                <div className={styles.username}>{username}</div>
+              </a>
+              <div
+                className={styles.rating}
+                style={{
+                  backgroundColor: getRatingColor(rating),
+                }}
+              >
+                {rating}
+              </div>
               <div
                 className={styles.progress}
                 style={{ backgroundColor: getProgressColor(progress) }}
