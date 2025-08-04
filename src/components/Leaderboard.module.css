@@ -7,14 +7,14 @@
 
 .categoryWrapper {
   width: 120px;
-  background-color: #f5f6fa;
+  background-color: var(--color-white-hover);
 }
 
 .category {
     text-align: right;
     padding: 4px;
     cursor: pointer;
-    border-right: 1px solid #2f3640;
+    border-right: 1px solid var(--color-black-hover);
 
   &:hover {
     background-color: #e7e8ec;
@@ -63,12 +63,12 @@
     cursor: pointer;
     
     &:hover {
-      color: #718093;
+      color: var(--color-black-hover);
       text-decoration: underline;
     }
   }
 
   &:nth-child(even) {
-    background-color: #f5f6fa;
+    background-color: var(--color-white-hover);
   }
 }

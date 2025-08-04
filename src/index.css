@@ -2,3 +2,10 @@
     font-size-adjust: ex-height 0.53;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+
+:root {
+    --color-black-hover: #718093;
+    --color-white-hover: #f5f6fa;
+    --color-selected: #dcdde1;
+    --color-selected-hover: #dfe4ea;
+}
