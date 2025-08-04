@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.leaderboard {
+  flex: 1;
+}
+
+.categoryWrapper {
+  width: 120px;
+}
+
+.category {
+    text-align: right;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.category:hover {
+  background-color: #e0e0e0;
+}
+
+.category.active {
+  background-color: #d0d0d0;
+}
+
+.player {
+  display: flex;
+  flex-direction: row;
+}
+
+.player div {
+  padding: 4px;
+}
