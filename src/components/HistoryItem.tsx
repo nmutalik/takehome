@@ -1,7 +1,7 @@
 import type { BoardState } from "@/types";
 import { defaultPieces } from "react-chessboard";
 
-import styles from "./HistoryItem.module.css";
+import styles from "./History.module.css";
 
 type HistoryItemProps = {
   boardState: BoardState;
