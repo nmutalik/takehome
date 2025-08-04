@@ -1,10 +1,7 @@
 import { useChessStore } from "@/store";
-import {
-  Chessboard,
-  defaultPieces,
-  type ChessboardOptions,
-} from "react-chessboard";
+import { Chessboard, type ChessboardOptions } from "react-chessboard";
 import styles from "./Chess.module.css";
+import HistoryItem from "./HistoryItem";
 
 const Chess = () => {
   const historyList = useChessStore((state) => state.historyList);
@@ -23,27 +20,14 @@ const Chess = () => {
         <Chessboard options={chessboardOptions} />
       </div>
       <div className={styles.history}>
-        {historyList.map((boardState, index) => {
-          let icon = null;
-          if (boardState?.piece?.pieceType) {
-            const ChessPiece = defaultPieces[boardState.piece.pieceType];
-            icon = (
-              <ChessPiece svgStyle={{ height: 30 }} key={boardState.hash} />
-            );
-          }
-          return (
-            <div
-              className={styles.historyItem}
-              key={boardState.hash}
-              onClick={() => setHistoryIndex(() => index)}
-            >
-              {icon}
-              <span className={styles.historySan}>
-                {boardState.san || "No move"}
-              </span>
-            </div>
-          );
-        })}
+        {historyList.map((boardState, index) => (
+          <HistoryItem
+            key={boardState.hash}
+            boardState={boardState}
+            selected={index === historyIndex}
+            onClick={() => setHistoryIndex(() => index)}
+          />
+        ))}
         <pre>{JSON.stringify(historyList, null, 2)}</pre>
       </div>
     </div>
