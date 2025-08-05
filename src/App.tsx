@@ -3,7 +3,7 @@ import { Suspense, useState } from "react";
 import Leaderboard from "./components/Leaderboard";
 
 import styles from "./App.module.css";
-import Chess from "./components/Chess";
+import Board from "./components/Board";
 
 type Pane = {
   name: string;
@@ -15,7 +15,7 @@ const PANES: Pane[] = [
   {
     name: "Chess",
     key: "chess",
-    component: Chess,
+    component: Board,
   },
   {
     name: "Leaderboard",

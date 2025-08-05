@@ -16,7 +16,6 @@ const HistoryList = () => {
           onClick={() => setHistoryIndex(() => index)}
         />
       ))}
-      <pre>{JSON.stringify(historyList, null, 2)}</pre>
     </div>
   );
 };

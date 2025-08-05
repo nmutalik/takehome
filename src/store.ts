@@ -23,7 +23,7 @@ export const useChessStore = create<ChessStore>(
     {
       currentBoard: INITIAL_STATE,
       historyIndex: 0,
-      historyList: [] as BoardState[],
+      historyList: [INITIAL_STATE] as BoardState[],
       leaderboardCategory: "bullet" as LeaderboardCategory,
     },
     (set) => ({
@@ -48,6 +48,7 @@ export const useChessStore = create<ChessStore>(
           const { san } = chessJS.move({
             from: sourceSquare,
             to: targetSquare,
+            promotion: "q",
           });
           set((state) => {
             const { historyList, historyIndex } = state;
